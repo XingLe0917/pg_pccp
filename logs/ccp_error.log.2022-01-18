@@ -1,0 +1,540 @@
+[Tue, 18 Jan 2022 10:35:01][cronjobmonitor.py][line:127][123145613676544][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3240, in _wrap_pool_connect
+    return fn()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "10.244.12.77", port 5432 failed: root certificate file "/Users/xingle/Documents/ciscoGithub/pg_pccp/conf/ssl/root.crt" does not exist
+Either provide the file or change sslmode to disable server certificate verification.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 103, in JobForCronStatus
+    list = depotdbDao.get_cronStatusForAlertList()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/dao/depotdbdao.py", line 267, in get_cronStatusForAlertList
+    rows = session.execute(SQL).fetchall()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1688, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1529, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 747, in _connection_for_bind
+    conn = bind.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3194, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3273, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3243, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2097, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3240, in _wrap_pool_connect
+    return fn()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 665, in __connect
+    with util.safe_reraise():
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "10.244.12.77", port 5432 failed: root certificate file "/Users/xingle/Documents/ciscoGithub/pg_pccp/conf/ssl/root.crt" does not exist
+Either provide the file or change sslmode to disable server certificate verification.
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 151, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 10:47:00][permissionmanagement.py][line:173][123145539710976][ERROR] (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "pk_ccp_role_page_info"
+DETAIL:  Key (page_dir, parent_page_dir, role_name, permission)=(/index, /home, visitor, 1) already exists.
+
+[SQL: insert into ccp_role_page_info (page_dir, parent_page_dir, page_name) values ('/index','/home', 'Dashboard')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[Tue, 18 Jan 2022 11:26:51][permissionmanagement.py][line:173][123145539710976][ERROR] (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "pk_ccp_page_info"
+DETAIL:  Key (page_dir, parent_page_dir)=(/index, /home) already exists.
+
+[SQL: insert into ccp_page_info (page_dir, parent_page_dir, page_name) values ('/index','/home', 'Dashboard')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[Tue, 18 Jan 2022 11:34:11][permissionmanagement.py][line:173][123145539710976][ERROR] (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "pk_ccp_page_info"
+DETAIL:  Key (page_dir, parent_page_dir)=(/index, /home) already exists.
+
+[SQL: insert into ccp_page_info (page_dir, parent_page_dir, page_name) values ('/index','/home', 'Dashboard')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[Tue, 18 Jan 2022 17:57:03][permissionmanagement.py][line:173][123145619271680][ERROR] 'User Permission'
+[Tue, 18 Jan 2022 17:58:18][permissionmanagement.py][line:173][123145619271680][ERROR] 'User Permission'
+[Tue, 18 Jan 2022 18:01:31][permissionmanagement.py][line:173][123145619271680][ERROR] 'User Permission'
+[Tue, 18 Jan 2022 21:40:08][permissionmanagement.py][line:173][123145593544704][ERROR] None
+[Tue, 18 Jan 2022 21:41:22][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 21:43:19][permissionmanagement.py][line:173][123145593544704][ERROR] None
+[Tue, 18 Jan 2022 21:45:27][permissionmanagement.py][line:173][123145593544704][ERROR] None
+[Tue, 18 Jan 2022 21:46:17][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 21:51:21][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 21:56:19][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:01:19][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:06:17][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:11:19][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:16:23][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:21:18][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:26:17][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)
+[Tue, 18 Jan 2022 22:26:27][permissionmanagement.py][line:173][123145593544704][ERROR] None
+[Tue, 18 Jan 2022 22:31:17][cronjobmonitor.py][line:127][123145610870784][ERROR] JobForCronStatus error occurred
+Traceback (most recent call last):
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 122, in JobForCronStatus
+    sendemail(msg)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/common/wbxmail.py", line 41, in sendemail
+    smtpObj = smtplib.SMTP(host='mda.webex.com:25')
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 60] Operation timed out
+Stack (most recent call last):
+  File "/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydev_bundle/pydev_monkey.py", line 795, in __call__
+    ret = self.original_func(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 83, in _worker
+    work_item.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/view.py", line 154, in cronStatusForAlert
+    JobForCronStatus()
+  File "/Users/lexing/Documents/ciscoGithub/pg_pccp/biz/cronjobmonitor.py", line 127, in JobForCronStatus
+    logger.error("JobForCronStatus error occurred", exc_info=e, stack_info=True)

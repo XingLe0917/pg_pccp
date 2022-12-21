@@ -1,0 +1,10 @@
+[Wed, 23 Feb 2022 10:20:48][depotdbmanagement.py][line:22][123145567510528][ERROR] (psycopg2.errors.CheckViolation) new row for relation "database_info" violates check constraint "database_info_db_type_check"
+DETAIL:  Failing row contains (pghtweb, il5-postgres-pghtweb, , POSTGRESQL, 13.4, bts, PRI, WEB, /pgdata, 5432, Y, pghtweb, pghtweb, 2022-02-23 02:20:48, 2022-02-23 02:20:48).
+
+[SQL: 
+                INSERT INTO database_info(db_name,host_name,cluster_name,db_vendor,db_version,db_type,application_type,appln_support_code,
+                db_home,listener_port,monitored,wbx_cluster,web_domain,createtime,lastmodifiedtime)
+                VALUES('pghtweb','il5-postgres-pghtweb','','POSTGRESQL','13.4','bts','PRI','WEB',
+                '/pgdata','5432','Y','pghtweb','pghtweb',now(),now())
+                ]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)

@@ -1,0 +1,14 @@
+{
+    "depotdb_ip":"10.244.12.77",
+    "depotdb_port": 5432,
+    "depotdb_dbname": "",
+    "depotdb_username":"depot",
+    "depotdb_password":"depot",
+    "influxDB_ip": "10.252.52.155",
+    "influxDB_port": "8086",
+    "influxDB_user": "admin",
+    "sslrootcert_file": "./conf/ssl/root.crt",
+    "sslcert_file": "./conf/ssl/client.crt",
+    "sslkey_file": "./conf/ssl/client.key"
+}
+
